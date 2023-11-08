@@ -11,7 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        if(!Schema::hasTable('tasks')){
+            Schema::create('tasks', function(Blueprint $table){
+                $table->increments('id');
+                $table->string('task', 128);
+                $table->text('description')->nullable();
+                $table->integer('status')->default(0);
+                $table->unsignedInteger('user_id');
+                $table->timestamps();
+                $table->foreign('user_id')
+                      ->references('id')
+                      ->on('users')
+                      ->onUpdate('cascade')
+                      ->onDelete('cascade');
+            });
+        }
     }
 
     /**
@@ -19,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('tasks');
     }
 };
