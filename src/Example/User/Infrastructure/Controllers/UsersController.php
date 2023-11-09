@@ -6,19 +6,8 @@ use Src\Example\User\Application\Find\UserFindAllUseCase;
 
 final class UsersController
 {
-    private UserFindAllUseCase $findAllUseCase;
-
-    /**
-     * @param UserFindAllUseCase $findAllUseCase
-     */
-    public function __construct(UserFindAllUseCase $findAllUseCase)
+    public function index(UserFindAllUseCase $findAllUseCase): array
     {
-        $this->findAllUseCase = $findAllUseCase;
-    }
-
-
-    public function index(): array
-    {
-        return $this->findAllUseCase->findAllUsers();
+        return $findAllUseCase->findAllUsers();
     }
 }
