@@ -7,8 +7,21 @@ use Src\Example\User\Domain\Contracts\UserRepositoryInterface;
 class UserRepository implements UserRepositoryInterface
 {
 
+    private User $user;
+
+    /**
+     * @param User $user
+     */
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
+
     public function findAll(): array
     {
-        return ['Hola desde implementacion de UserRepositoryContract'];
+        return $this->user
+                    ->all()
+                    ->toArray();
     }
 }
