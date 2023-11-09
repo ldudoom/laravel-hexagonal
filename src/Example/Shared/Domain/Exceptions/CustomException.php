@@ -2,7 +2,7 @@
 
 namespace Src\Example\Shared\Domain\Exceptions;
 
-final class CustomException extends \Exception
+class CustomException extends \Exception
 {
     public function toException(): array
     {
