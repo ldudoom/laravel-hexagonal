@@ -172,7 +172,12 @@ return [
         /*
          * User Route Service Provider
          */
-        Src\Example\User\Infrastructure\Services\RouteServiceProvider::class
+        Src\Example\User\Infrastructure\Services\RouteServiceProvider::class,
+
+        /*
+         * Dependency Service Provider
+         */
+        Src\Example\User\Infrastructure\Services\DependencyServiceProvider::class,
 
     ])->toArray(),
 
